@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: marktview
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: markview_db
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+security:
+  basic:
+    enabled: false
+
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+
+
+
+
