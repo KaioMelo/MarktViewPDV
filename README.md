@@ -36,3 +36,14 @@
 
 </br>
 
+<ul>
+     <li><strong>🏪 Operação de Frente de Caixa:</strong> Checkout ágil com consultas de altíssima velocidade, controle de turnos por operador, suprimentos e sangrias.</li> 
+     <li><strong>🎯 Clube de Vantagens (Fidelidade):</strong> Identificação instantânea via CPF/CNPJ diretamente no caixa para aplicação automatizada de descontos e pontuação síncrona.</li>
+     <li><strong>🧾 Automação Fiscal Assíncrona:</strong> Emissão e gerenciamento de notas fiscais (NFC-e/NF-e) integradas à SEFAZ de forma desacoplada, evitando travamentos na tela de venda.</li>
+    <li><strong>📊 Auditoria e Giro de Estoque:</strong> Rastreamento rigoroso e imutável de movimentações de inventário por produto, integrado à gestão de fornecedores.</li>
+</ul>
+
+</br>
+
+<p>Diferencial: O sistema utiliza uma arquitetura híbrida NoSQL (MongoDB) pensada para escalar na nuvem (AWS) e se comunicar via mensageria (RabbitMQ), garantindo que o caixa continue funcionando mesmo em momentos de oscilação ou queda de internet.</p>
+
