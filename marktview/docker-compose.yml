@@ -1,16 +1,57 @@
 version: '3.8'
 
 services:
+  # --- SERVIÇO DO BANCO DE DADOS (MONGODB) ---
   mongodb:
     image: mongo:latest
-    container_name: mongo-pdv
-    environment:
-      - MONGO_INITDB_DATABASE=marktview_db
-    ports:
-      - "27017:27017"
-    volumes:
-      - marktview-db-data:/data/db
+    container_name: marktview-mongodb
     restart: always
+    ports:
+      - "${MONGO_PORT}:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
+      - MONGO_INITDB_DATABASE=${MONGO_DB_NAME}
+    volumes:
+      - mongo-data:/data/db
+
+  # --- SERVIÇO DE MENSAGERIA (RABBITMQ) ---
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: marktview-rabbitmq
+    restart: always
+    ports:
+      - "${RABBIT_PORT_DEFAULT}:5672"       # Porta de comunicação da API
+      - "${RABBIT_PORT_DASHBOARD}:15672"   # Porta do Painel Web (Dashboard)
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBIT_PASS}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+# --- SERVIÇO DA SUA API SPRING BOOT ---
+# (Opcional: Caso você já queira rodar o jar da aplicação direto no Docker)
+#  marktview-api:
+#    image: openjdk:21-jdk-slim # Ou sua imagem customizada buildada pelo Maven
+#    container_name: marktview-api
+#    restart: on-failure
+#    depends_on:
+#      - mongodb
+#      - rabbitmq
+#    ports:
+#      - "${API_PORT}:8080"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILE}
+#      - SPRING_DATA_MONGODB_HOST=mongodb
+#      - SPRING_DATA_MONGODB_PORT=27017
+#      - SPRING_DATA_MONGODB_USERNAME=${MONGO_ROOT_USER}
+#      - SPRING_DATA_MONGODB_PASSWORD=${MONGO_ROOT_PASS}
+#      - SPRING_DATA_MONGODB_DATABASE=${MONGO_DB_NAME}
+#      - SPRING_RABBITMQ_HOST=rabbitmq
+#      - SPRING_RABBITMQ_PORT=5672
+#      - SPRING_RABBITMQ_USERNAME=${RABBIT_USER}
+#      - SPRING_RABBITMQ_PASSWORD=${RABBIT_PASS}
 
 volumes:
-  marktview-db-data:
+  mongo-data:
+  rabbitmq-data:

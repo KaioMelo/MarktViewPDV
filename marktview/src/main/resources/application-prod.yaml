@@ -1,0 +1,15 @@
+spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOST:prod-rabbitmq}
+    port: 5672
+    username: ${RABBITMQ_USER}
+    password: ${RABBITMQ_PASS}
+
+  data:
+    mongodb:
+      host: ${MONGO_HOST:prod-mongo}
+      port: 27017
+      database: marktview_prod
+      # Se o seu Mongo de produção exigir usuário/senha:
+      username: ${MONGO_USER}
+      password: ${MONGO_PASS}

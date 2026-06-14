@@ -1,10 +1,10 @@
-package br.com.marktview.marktview;
+package br.com.marktview;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MarktviewApplicationTests {
+class ApplicationInitializerTests {
 
 	@Test
 	void contextLoads() {

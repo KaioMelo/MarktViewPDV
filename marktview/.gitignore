@@ -1,3 +1,7 @@
+### Custom Ignored Files ###
+.env
+
+### Maven Padrão ###
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar

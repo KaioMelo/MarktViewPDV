@@ -1,13 +1,13 @@
-package br.com.marktview.marktview;
+package br.com.marktview;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MarktviewApplication {
+public class ApplicationInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MarktviewApplication.class, args);
+		SpringApplication.run(ApplicationInitializer.class, args);
 	}
 
 }

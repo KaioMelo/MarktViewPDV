@@ -1,4 +1,4 @@
-package br.com.marktview.marktview;
+package br.com.marktview;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(MarktviewApplication.class);
+		return application.sources(ApplicationInitializer.class);
 	}
 
 }
